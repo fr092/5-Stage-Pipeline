@@ -1,5 +1,5 @@
-#include<iostream>
-#include<math.h>
+#include <iostream>
+#include <math.h>
 #include "memory.hpp"
 #define int long long
 
