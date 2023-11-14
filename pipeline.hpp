@@ -24,12 +24,12 @@ class pipeline{
     int idex_rs1;
     int idex_rs2;
     int idex_rdl;
-    int idex_cw;
+    control_unit idex_cw;
     int exmo_alu_out;
-    int exmo_cw;
+    control_unit exmo_cw;
     int exmo_rs2;
     int exmo_rdl;
-    int mowb_cw;
+    control_unit mowb_cw;
     int mowb_alu_out;
     int mowb_ld_out;
     int mowb_rdl;

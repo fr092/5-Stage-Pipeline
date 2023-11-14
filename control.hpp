@@ -20,17 +20,21 @@ class control_unit{
         return ;
     }
 
-};
-
-class alu_control{
-    
-    private:
-
-    public:
+    void operator+(control_unit &other){
+        this->reg_read = other.reg_read;
+        this->reg_write = other.reg_write;
+        this->alu_src = other.alu_src;
+        this->alu_op = other.alu_op;
+        this->branch = other.branch;
+        this->jump = other.jump;
+        this->mem_read = other.mem_read;
+        this->mem_write = other.mem_write;
+        this->mem2reg = other.mem2reg;
+    }
 
     int alu_select_generation(int alu_op){
 
         return 1;
     }
-    
+
 };
