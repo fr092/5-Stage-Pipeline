@@ -1,2 +1,0 @@
-assembler takes instructions form file, converts them to machine code
-load machine code in instruction memory
