@@ -81,9 +81,78 @@ class alu_control{
 
     public:
 
-    int alu_select_generation(int alu_op){
+    int alu_select_generation(int alu_op, int func3, int thirty){
+        if(alu_op == 1){
+            if(func3 == 0 && thirty == 0)
+                return 0;
+            else if(func3 == 0 && thirty == 1)
+                return 1;
+            else if(func3 == 1 && thirty == 0)
+                return 2;
+            else if(func3 == 2 && thirty == 0)
+                return 3; //slt
+            else if(func3 == 3 && thirty == 0)
+                return 4; //sltu
+            else if(func3 == 4 && thirty == 0)
+                return 5;
+            else if(func3 == 5 && thirty == 0)
+                return 6; //srl
+            else if(func3 == 5 && thirty == 1)
+                return 7; //sra
+            else if(func3 == 6 && thirty == 0)
+                return 8;
+            else if(func3 == 7 && thirty == 0)
+                return 9;
+            else if(func3 == 6 && thirty == 1)
+                return 10;
+            else if(func3 == 5 && thirty == 1)
+                return 11;
+        }
 
-        return 1;
+        else if(alu_op == 2){
+            if(func3 == 0)
+                return 0;
+            else if(func3 == 1)
+                return 2;
+            else if(func3 == 2)
+                return 14; //slti
+            else if(func3 == 3)
+                return 15; //sltiu
+            else if(func3 == 4)
+                return 5;
+            else if(func3 == 5 && thirty == 0)
+                return 17; //srli
+            else if(func3 == 5 && thirty == 1)
+                return 18; //srai
+            else if(func3 == 6)
+                return 8;
+            else if(func3 == 7)
+                return 9;
+        }
+
+        else if(alu_op == 3)
+            return 0;
+        
+        else if(alu_op == 4)
+            return 0;
+        
+        else if(alu_op == 5){
+            if(func3 == 0)
+                return 0;
+            if(func3 == 1)
+                return 1;
+            if(func3 == 4)
+                return 2;
+            if(func3 == 5)
+                return 3;
+            if(func3 == 6)
+                return 4; //bltu
+            if(func3 == 7)
+                return 5; //bgeu
+        }
+        
+        std::cout<<"Error in determining alu_select"<<std::endl;
+        return -1;
     }
 
 };

@@ -70,9 +70,9 @@ class pipeline{
     }
 
     void execute(alu* ALU, alu_control* ALUControl){
-        int alu_select = ALUControl->alu_select_generation(idex_cw.alu_op);
+        int alu_select = ALUControl->alu_select_generation(idex_cw.alu_op, idex_func, sub(idex_imm, 10, 10));
         exmo_alu_out = ALU->alu_out(alu_select, idex_rs1, idex_rs2);
-        int zero_flag = ALU->flag(idex_rs1, idex_rs2); 
+        int zero_flag = ALU->flag(alu_select, idex_rs1, idex_rs2);
         exmo_cw = idex_cw;
         exmo_rs2 = idex_rs2;
         exmo_rdl = idex_rdl;
