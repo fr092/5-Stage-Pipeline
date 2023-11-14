@@ -6,7 +6,8 @@ class control_unit{
 
     public:
 
-    int reg_read;
+    int reg_read1;
+    int reg_read2;
     int reg_write;
     int alu_src;
     int alu_op;
@@ -21,7 +22,8 @@ class control_unit{
     }
 
     void operator+(control_unit &other){
-        this->reg_read = other.reg_read;
+        this->reg_read1 = other.reg_read1;
+        this->reg_read2 = other.reg_read2;
         this->reg_write = other.reg_write;
         this->alu_src = other.alu_src;
         this->alu_op = other.alu_op;
@@ -31,6 +33,15 @@ class control_unit{
         this->mem_write = other.mem_write;
         this->mem2reg = other.mem2reg;
     }
+
+
+};
+
+class alu_control{
+
+    private:
+
+    public:
 
     int alu_select_generation(int alu_op){
 

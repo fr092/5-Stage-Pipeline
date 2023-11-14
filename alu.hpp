@@ -37,4 +37,9 @@ class alu{
         return result;
     }
 
+    int flag(int input_data_1, int input_data_2){
+
+        return 1;
+    }
+
 };

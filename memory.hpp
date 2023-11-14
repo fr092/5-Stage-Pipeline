@@ -25,11 +25,11 @@ class instruction_memory{
     
     public:
 
-    std::string *data;
+    int *data;
 
     instruction_memory(int size){
 
-        this->data = new std::string[size];
+        this->data = new int[size];
         for(int i=0;i<size;i++){
             this->data[i] = rand()%10 + 1;
         }
