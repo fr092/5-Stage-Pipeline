@@ -1,6 +1,6 @@
 #include<iostream>
 
-class main_memory{
+class data_memory{
 
     private:
     
@@ -8,9 +8,28 @@ class main_memory{
 
     int *data;
 
-    main_memory(int size){
+    data_memory(int size){
 
         this->data = new int[size];
+        for(int i=0;i<size;i++){
+            this->data[i] = rand()%10 + 1;
+        }
+
+    }
+
+};
+
+class instruction_memory{
+
+    private:
+    
+    public:
+
+    std::string *data;
+
+    instruction_memory(int size){
+
+        this->data = new std::string[size];
         for(int i=0;i<size;i++){
             this->data[i] = rand()%10 + 1;
         }
