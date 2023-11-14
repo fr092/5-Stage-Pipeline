@@ -70,4 +70,8 @@ class instruction_memory{
         return;
     }
 
+    int read(int index){
+        return this->data[index];
+    }
+
 };

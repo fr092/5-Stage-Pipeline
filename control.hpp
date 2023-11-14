@@ -6,18 +6,57 @@ class control_unit{
 
     public:
 
-    int reg_read1;
-    int reg_read2;
-    int reg_write;
-    int alu_src;
-    int alu_op;
-    int branch;
-    int jump;
-    int mem_read;
-    int mem_write;
-    int mem2reg;
+    int reg_read1 = 0;
+    int reg_read2 = 0;
+    int alu_src = 0;
+    int reg_write = 0;
+    int alu_op = 0;
+    int branch = 0;
+    int jump = 0;
+    int mem_read = 0;
+    int mem_write = 0;
+    int mem2reg = 0; //1 means ldresult will be written
+    
+    //opcodes r=51, i=19, il=3, s=35, b=99, j=
+    void control_word_generation(int opcode){
 
-    void control_word_generation(int ins){
+        this->reg_read1 = 1;
+        
+        if(opcode == 51 || opcode ==35 || opcode == 99)
+            this->reg_read2 = 1;
+        else
+            this->alu_src = 1;
+
+        if(opcode != 35 && opcode !=99)
+            this->reg_write = 1;
+
+        else if(opcode == 51)
+            this->alu_op = 1;
+
+        else if(opcode == 19)
+            this->alu_op = 2;
+
+        else if(opcode == 3)
+            this->alu_op = 3;
+
+        else if(opcode == 35)
+            this->alu_op = 4;
+
+        else if(opcode == 99)
+            this->alu_op = 5;
+        
+        if(opcode == 99)
+            this->branch = 1;
+
+        if(opcode == 3)
+            this->mem_read = 1;
+        
+        if(opcode == 35)
+            this->mem_write = 1;
+        
+        if(opcode == 3)
+           this->mem2reg = 1;
+         
         return ;
     }
 
@@ -33,7 +72,6 @@ class control_unit{
         this->mem_write = other.mem_write;
         this->mem2reg = other.mem2reg;
     }
-
 
 };
 

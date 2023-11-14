@@ -12,7 +12,7 @@ class pipeline{
     public:
 
     //21 pipeline registers, 21 = 19(given in dia) + 2(added ifid_npc, idex_npc)
-    int pc;
+    int pc = 0;
     int ifid_ir;
     int ifid_dpc;
     int ifid_npc;
@@ -43,9 +43,10 @@ class pipeline{
     }
     
     void fetch(instruction_memory* im){
-        ifid_ir = im->data[pc];
+        ifid_ir = im->read(pc);
         ifid_dpc = pc;
-        ifid_npc = pc++; //pc = pc+4
+        pc++;  //pc = pc+4
+        ifid_npc = pc; 
         return ;
     }
 
@@ -60,10 +61,10 @@ class pipeline{
 
         if(idex_cw.reg_read1 == 1)
             idex_rs1 = GPR->read(sub(ifid_ir, 15, 19));
+        if(idex_cw.reg_read2 == 1)
+            idex_rs2 = GPR->read(sub(ifid_ir, 20, 24));
         if(idex_cw.alu_src == 1)
             idex_rs2 = sub(ifid_ir, 20, 31);
-        if(idex_cw.reg_read2 == 1)
-            idex_rs2 = sub(ifid_ir, 20, 24);
         
         return ;
     }
