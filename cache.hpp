@@ -59,7 +59,7 @@ class Cache{
     }
 
 
-    int read(int mem_address, main_memory* ram){
+    int read(int mem_address, data_memory* ram){
 
         int mem_add = mem_address;
         int off = mem_address & ((1<<this->offset_bits) - 1);
@@ -95,7 +95,7 @@ class Cache{
     }
 
 
-    int allocate(int mem_address, int index, main_memory* ram){
+    int allocate(int mem_address, int index, data_memory* ram){
 
         int blk = replace_algo(index);
         this->access[index][blk] = this->timer;
@@ -136,7 +136,7 @@ class Cache{
     }
 
 
-    int write(int mem_address, main_memory* ram, int data){
+    int write(int mem_address, data_memory* ram, int data){
 
         int mem_add = mem_address;
         int off = mem_address & ((1<<this->offset_bits) - 1);
