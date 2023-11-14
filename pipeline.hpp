@@ -107,6 +107,7 @@ class pipeline{
                 GPR->write(mowb_rdl, mowb_alu_out);
         }
 
+        return ;
     }
 
 };
