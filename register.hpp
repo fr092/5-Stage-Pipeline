@@ -6,14 +6,17 @@ class registers{
 
     public:
 
-    int *arr = new int[32];
+    int *data = new int[32];
+    registers(){
+        this->data[0] = 0;
+    }
 
     int read(int index){
-        return arr[index];
+        return this->data[index];
     }
     
     void write(int index, int data){
-        arr[index] = data;
+        this->data[index] = data;
         return ;
     }
 

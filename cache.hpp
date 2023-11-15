@@ -55,7 +55,6 @@ class Cache{
                 this->access[i][j] = 0;
             }
         }
-
     }
 
 
@@ -103,7 +102,7 @@ class Cache{
         if(this->state[index][blk] == 3){
             int temp = mem_address << (this->index_bits + this->offset_bits);
             for(int i=0;i<this->blocks;i++)
-                ram->data[temp + i] = this->data[index][blk][i];
+                ram->write(temp+i, this->data[index][blk][i]);
         }
 
         this->state[index][blk] = 1;
@@ -111,7 +110,7 @@ class Cache{
 
         mem_address = mem_address << (this->index_bits + this->offset_bits);
         for(int i=0;i<this->blocks;i++)
-            this->data[index][blk][i] = ram->data[mem_address + i];
+            this->data[index][blk][i] = ram->read(mem_address + i);
         this->state[index][blk] = 2;
 
         return blk;

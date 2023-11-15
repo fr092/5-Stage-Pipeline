@@ -399,7 +399,7 @@ class assembler{
 
         if(it != labels.end()){
             int jump = labels[label];
-            int eff = (jump-curr_inst)*4;
+            int eff = (jump-curr_inst);
             label = std::to_string(eff);
             return label;
         }
